@@ -1,0 +1,24 @@
+body {
+	margin: 0;
+	padding: 0;
+	background-color: #ccc;
+}
+
+.commentBox {
+	background-color: #aaa;
+	padding: 10px;
+	height: 100%;
+}
+
+.commentList {
+	background-color: #999;
+}
+
+.commentAuthor {
+	color: #fff;
+}
+
+.commentForm {
+	background-color: #888;
+	margin-top: 10px;
+}

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Hello React!</title>
+    <script src="node_modules/react/dist/react.js"></script>
+    <script src="node_modules/react-dom/dist/react-dom.js"></script>
+    <script src="node_modules/babel-core/browser.js"></script>
+  </head>
+  <body>
+    <div id="example"></div>
+    <script type="text/babel">
+
+      // component 
+      // 组建名称首字母大写
+      let CommentBox  =  React.createClass({
+        render: function(){
+           // 只能有一个根标签 不然会报错 
+           //SyntaxError: embedded: Adjacent JSX elements must be wrapped in an //enclosing tag (5:40)
+           return <div>Hello World</div>;
+        }
+      });
+
+      ReactDOM.render(
+        <CommentBox />,
+        document.getElementById('example')
+      );
+      
+    </script>
+  </body>
+</html>

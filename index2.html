@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Hello React!</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="node_modules/react/dist/react.js"></script>
+    <script src="node_modules/react-dom/dist/react-dom.js"></script>
+    <script src="node_modules/babel-core/browser.js"></script>
+    <script src="node_modules/jquery/dist/jquery.js"></script>
+    <script src="node_modules/marked/lib/marked.js"></script>
+  </head>
+  <body>
+    <div id="content"></div>
+
+
+    <script type="text/babel">
+      // component comentBox 
+      var ComentBox = React.createClass({
+        render: function(){
+          return (
+            <div className="commentBox">
+              <h1>Comments</h1>
+              <CommentList author="Jay">This is one comment</CommentList>
+              <CommentList author="Mike"># This is *another* comment</CommentList>
+              <CommentForm/>
+            </div>
+          );
+        }
+      });
+
+      // component CommentList
+      var CommentList = React.createClass({
+
+        rawMarkup: function() {
+            var rawMarkup = marked(this.props.children.toString(), {sanitize: true});
+            return { __html: rawMarkup };
+        },
+
+
+        render: function(){
+          return (
+            <div className="commentList">
+              <h2 className="commentAuthor">
+                {this.props.author}
+              </h2>
+              <span dangerouslySetInnerHTML={this.rawMarkup()} />
+            </div>
+          );
+        }
+      });
+
+
+      // component CommentForm
+      var CommentForm = React.createClass({
+        render: function(){
+          return (
+            <div className="commentForm">
+              Hello, world! I am a ConmentForm.
+            </div>
+          );
+        }
+      });
+
+      ReactDOM.render(
+        <ComentBox />,
+        document.getElementById('content')
+      );
+    </script>
+  </body>
+</html>
